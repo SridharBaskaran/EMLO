@@ -1,8 +1,8 @@
 # Pytorch Lightning - Hydra
 ## Development
 ### Install in dev mode
-pip install -e .
-pip install -r requirements.txt
+> pip install -e .
+> pip install -r requirements.txt
 
 mylib --help
 mylib_train data.num_workers=16
