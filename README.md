@@ -2,9 +2,10 @@
 ## Development
 ### Install in dev mode
 ```
-> pip install -e .
-> pip install -r requirements.txt
-
+pip install -e .
+pip install -r requirements.txt
+```
+```
 mylib --help
 mylib_train data.num_workers=16
 mylib_train data.num_workers=16 trainer.deterministic=True +trainer.fast_dev_run=True
