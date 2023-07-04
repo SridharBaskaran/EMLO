@@ -1,0 +1,14 @@
+defaults:
+  - _self_
+  - data: image_folder.yaml
+  - model: vit.yaml
+  - paths: default.yaml
+  - trainer: default.yaml
+
+
+model:
+  num_classes: 2
+
+ckpt_dir: ${hydra:runtime.cwd}/outputs/
+ckpt_file: 2023-06-21/00-32-27/checkpoints/epoch_000.ckpt
+test_ckpt_path: ${ckpt_dir}/${ckpt_file}

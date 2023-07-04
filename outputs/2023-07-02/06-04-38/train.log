@@ -1,0 +1,29 @@
+[2023-07-02 06:04:38,217][mylib.train][INFO] - Instantiating datamodule <mylib.data.cifar_datamodule.CIFARDataModule>
+[2023-07-02 06:04:38,220][mylib.train][INFO] - Instantiating model <mylib.model.timm_module.TIMMModule>
+[2023-07-02 06:04:38,408][mylib.train][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2023-07-02 06:04:38,485][mylib.train][INFO] - Starting training!
+[2023-07-02 06:04:38,617][mylib.utils.utils][ERROR] - 
+Traceback (most recent call last):
+  File "/workspace/EMLO/mylib/utils/utils.py", line 65, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+                               ^^^^^^^^^^^^^^^^^^
+  File "/workspace/EMLO/mylib/train.py", line 37, in train
+    trainer.fit(model=model, datamodule=datamodule,
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 531, in fit
+    call._call_and_handle_interrupt(
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 42, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 570, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 927, in _run
+    self._data_connector.prepare_data()
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/connectors/data_connector.py", line 94, in prepare_data
+    call._call_lightning_datamodule_hook(trainer, "prepare_data")
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 160, in _call_lightning_datamodule_hook
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/EMLO/mylib/data/cifar_datamodule.py", line 43, in prepare_data
+    CIFAR10(self.hparams.data_dir, train=True, download=True)
+TypeError: 'module' object is not callable
+[2023-07-02 06:04:38,618][mylib.utils.utils][INFO] - Output dir: /workspace/EMLO/outputs/2023-07-02/06-04-38

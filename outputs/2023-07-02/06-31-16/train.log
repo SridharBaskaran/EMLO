@@ -1,0 +1,80 @@
+[2023-07-02 06:31:16,459][mylib.train][INFO] - Instantiating datamodule <mylib.data.cifar_datamodule.CIFARDataModule>
+[2023-07-02 06:31:16,463][mylib.train][INFO] - Instantiating model <mylib.model.timm_module.TIMMModule>
+[2023-07-02 06:31:16,649][mylib.train][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2023-07-02 06:31:16,728][mylib.train][INFO] - Starting training!
+[2023-07-02 06:31:21,470][mylib.utils.utils][ERROR] - 
+Traceback (most recent call last):
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1132, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gitpod/.pyenv/versions/3.11.1/lib/python3.11/multiprocessing/queues.py", line 113, in get
+    if not self._poll(timeout):
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/gitpod/.pyenv/versions/3.11.1/lib/python3.11/multiprocessing/connection.py", line 256, in poll
+    return self._poll(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/gitpod/.pyenv/versions/3.11.1/lib/python3.11/multiprocessing/connection.py", line 423, in _poll
+    r = wait([self], timeout)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gitpod/.pyenv/versions/3.11.1/lib/python3.11/multiprocessing/connection.py", line 930, in wait
+    ready = selector.select(timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gitpod/.pyenv/versions/3.11.1/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/torch/utils/data/_utils/signal_handling.py", line 66, in handler
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 8516) is killed by signal: Bus error. It is possible that dataloader's workers are out of shared memory. Please try to raise your shared memory limit.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/EMLO/mylib/utils/utils.py", line 65, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+                               ^^^^^^^^^^^^^^^^^^
+  File "/workspace/EMLO/mylib/train.py", line 37, in train
+    trainer.fit(model=model, datamodule=datamodule,
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 531, in fit
+    call._call_and_handle_interrupt(
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 42, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 570, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 975, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 1016, in _run_stage
+    self._run_sanity_check()
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 1045, in _run_sanity_check
+    val_loop.run()
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/loops/utilities.py", line 177, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 108, in run
+    batch, batch_idx, dataloader_idx = next(data_fetcher)
+                                       ^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/loops/fetchers.py", line 136, in __next__
+    self._fetch_next_batch(self.dataloader_iter)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/loops/fetchers.py", line 150, in _fetch_next_batch
+    batch = next(iterator)
+            ^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/utilities/combined_loader.py", line 284, in __next__
+    out = next(self._iterator)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/utilities/combined_loader.py", line 123, in __next__
+    out = next(self.iterators[0])
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 633, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1328, in _next_data
+    idx, data = self._get_data()
+                ^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1294, in _get_data
+    success, data = self._try_get_data()
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1145, in _try_get_data
+    raise RuntimeError('DataLoader worker (pid(s) {}) exited unexpectedly'.format(pids_str)) from e
+RuntimeError: DataLoader worker (pid(s) 8404, 8451, 8516) exited unexpectedly
+[2023-07-02 06:31:21,476][mylib.utils.utils][INFO] - Output dir: /workspace/EMLO/outputs/2023-07-02/06-31-16

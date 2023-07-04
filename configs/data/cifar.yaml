@@ -1,0 +1,7 @@
+_target_: mylib.data.cifar_datamodule.CIFARDataModule
+data_dir: ${paths.data_dir}
+batch_size: 64
+train_val_test_split: [45_000, 5_000, 10_000]
+num_workers: 0
+pin_memory: False
+input_size: 224

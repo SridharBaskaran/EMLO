@@ -1,0 +1,5 @@
+[2023-07-01 19:57:49,391][__main__][INFO] - Instantiating datamodule <mylib.data.cifar_datamodule.CIFARDataModule>
+[2023-07-01 19:57:49,396][mylib.utils.utils][INFO] - Output dir: /workspace/EMLO/mylib/outputs/2023-07-01/19-57-49
+[2023-07-01 19:57:49,396][__main__][INFO] - Instantiating datamodule <mylib.data.cifar_datamodule.CIFARDataModule>
+[2023-07-01 19:57:49,398][mylib.utils.utils][INFO] - Output dir: /workspace/EMLO/mylib/outputs/2023-07-01/19-57-49
+[2023-07-01 19:57:49,399][mylib.utils.utils][INFO] - Metric name is None! Skipping metric value retrieval...

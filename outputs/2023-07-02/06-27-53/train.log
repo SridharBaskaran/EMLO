@@ -1,0 +1,33 @@
+[2023-07-02 06:27:53,524][mylib.train][INFO] - Instantiating datamodule <mylib.data.cifar_datamodule.CIFARDataModule>
+[2023-07-02 06:27:53,528][mylib.train][INFO] - Instantiating model <mylib.model.timm_module.TIMMModule>
+[2023-07-02 06:27:53,714][mylib.train][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2023-07-02 06:27:53,793][mylib.train][INFO] - Starting training!
+[2023-07-02 06:28:01,123][mylib.utils.utils][ERROR] - 
+Traceback (most recent call last):
+  File "/workspace/EMLO/mylib/utils/utils.py", line 65, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+                               ^^^^^^^^^^^^^^^^^^
+  File "/workspace/EMLO/mylib/train.py", line 37, in train
+    trainer.fit(model=model, datamodule=datamodule,
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 531, in fit
+    call._call_and_handle_interrupt(
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 42, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 570, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 936, in _run
+    call._call_setup_hook(self)  # allow user to setup lightning_module in accelerator environment
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 79, in _call_setup_hook
+    _call_lightning_datamodule_hook(trainer, "setup", stage=fn)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 160, in _call_lightning_datamodule_hook
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/EMLO/mylib/data/cifar_datamodule.py", line 61, in setup
+    self.data_train, self.data_val, self.data_test = random_split(
+                                                     ^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/torch/utils/data/dataset.py", line 353, in random_split
+    raise ValueError("Sum of input lengths does not equal the length of the input dataset!")
+ValueError: Sum of input lengths does not equal the length of the input dataset!
+[2023-07-02 06:28:01,125][mylib.utils.utils][INFO] - Output dir: /workspace/EMLO/outputs/2023-07-02/06-27-53

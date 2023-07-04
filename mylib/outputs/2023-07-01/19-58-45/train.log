@@ -1,0 +1,2 @@
+[2023-07-01 19:58:45,705][__main__][INFO] - Instantiating datamodule <mylib.data.cifar_datamodule.CIFARDataModule>
+[2023-07-01 19:58:45,709][mylib.utils.utils][INFO] - Output dir: /workspace/EMLO/mylib/outputs/2023-07-01/19-58-45

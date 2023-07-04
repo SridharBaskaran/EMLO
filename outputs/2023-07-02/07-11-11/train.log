@@ -1,0 +1,70 @@
+[2023-07-02 07:11:11,332][mylib.train][INFO] - Instantiating datamodule <mylib.data.cifar_datamodule.CIFARDataModule>
+[2023-07-02 07:11:11,335][mylib.train][INFO] - Instantiating model <mylib.model.timm_module.TIMMModule>
+[2023-07-02 07:11:11,520][mylib.train][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2023-07-02 07:11:11,601][mylib.train][INFO] - Starting training!
+[2023-07-02 07:11:13,806][mylib.utils.utils][ERROR] - 
+Traceback (most recent call last):
+  File "/workspace/EMLO/mylib/utils/utils.py", line 65, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+                               ^^^^^^^^^^^^^^^^^^
+  File "/workspace/EMLO/mylib/train.py", line 37, in train
+    trainer.fit(model=model, datamodule=datamodule,
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 531, in fit
+    call._call_and_handle_interrupt(
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 42, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 570, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 975, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 1016, in _run_stage
+    self._run_sanity_check()
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 1045, in _run_sanity_check
+    val_loop.run()
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/loops/utilities.py", line 177, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 115, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 375, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_kwargs.values())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 287, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/strategies/strategy.py", line 379, in validation_step
+    return self.model.validation_step(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/EMLO/mylib/model/timm_module.py", line 81, in validation_step
+    loss, preds, targets = self.model_step(batch)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/EMLO/mylib/model/timm_module.py", line 58, in model_step
+    logits = self.forward(x)
+             ^^^^^^^^^^^^^^^
+  File "/workspace/EMLO/mylib/model/timm_module.py", line 47, in forward
+    return self.net(x)
+           ^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/timm/models/efficientnet.py", line 179, in forward
+    x = self.forward_features(x)
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/timm/models/efficientnet.py", line 163, in forward_features
+    x = self.bn1(x)
+        ^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/timm/layers/norm_act.py", line 118, in forward
+    x = F.batch_norm(
+        ^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/torch/nn/functional.py", line 2450, in batch_norm
+    return torch.batch_norm(
+           ^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/torch/utils/data/_utils/signal_handling.py", line 66, in handler
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 16358) is killed by signal: Bus error. It is possible that dataloader's workers are out of shared memory. Please try to raise your shared memory limit.
+[2023-07-02 07:11:13,810][mylib.utils.utils][INFO] - Output dir: /workspace/EMLO/outputs/2023-07-02/07-11-11

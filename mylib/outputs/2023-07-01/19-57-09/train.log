@@ -1,0 +1,12 @@
+[2023-07-01 19:57:09,489][__main__][INFO] - Instantiating datamodule <mylib.data.cifar_datamodule.CIFARDataModule>
+[2023-07-01 19:57:09,493][__main__][INFO] - Starting training!
+[2023-07-01 19:57:09,493][mylib.utils.utils][ERROR] - 
+Traceback (most recent call last):
+  File "/workspace/EMLO/mylib/utils/utils.py", line 65, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+                               ^^^^^^^^^^^^^^^^^^
+  File "/workspace/EMLO/mylib/train.py", line 37, in train
+    trainer.fit(model=model, datamodule=datamodule,
+    ^^^^^^^
+NameError: name 'trainer' is not defined
+[2023-07-01 19:57:09,494][mylib.utils.utils][INFO] - Output dir: /workspace/EMLO/mylib/outputs/2023-07-01/19-57-09

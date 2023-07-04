@@ -1,0 +1,3 @@
+[console_scripts]
+mylib_eval = mylib.eval:main
+mylib_train = mylib.train:main

@@ -1,0 +1,47 @@
+[2023-07-02 06:30:10,331][mylib.train][INFO] - Instantiating datamodule <mylib.data.cifar_datamodule.CIFARDataModule>
+[2023-07-02 06:30:10,334][mylib.train][INFO] - Instantiating model <mylib.model.timm_module.TIMMModule>
+[2023-07-02 06:30:10,519][mylib.train][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2023-07-02 06:30:10,599][mylib.train][INFO] - Starting training!
+[2023-07-02 06:30:12,172][mylib.utils.utils][ERROR] - 
+Traceback (most recent call last):
+  File "/workspace/EMLO/mylib/utils/utils.py", line 65, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+                               ^^^^^^^^^^^^^^^^^^
+  File "/workspace/EMLO/mylib/train.py", line 37, in train
+    trainer.fit(model=model, datamodule=datamodule,
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 531, in fit
+    call._call_and_handle_interrupt(
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 42, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 570, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 975, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 1016, in _run_stage
+    self._run_sanity_check()
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 1045, in _run_sanity_check
+    val_loop.run()
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/loops/utilities.py", line 177, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 98, in run
+    self.setup_data()
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 150, in setup_data
+    dataloaders = _request_dataloader(source)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/connectors/data_connector.py", line 330, in _request_dataloader
+    return data_source.dataloader()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/connectors/data_connector.py", line 300, in dataloader
+    return call._call_lightning_datamodule_hook(self.instance.trainer, self.name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 160, in _call_lightning_datamodule_hook
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/EMLO/mylib/data/cifar_datamodule.py", line 81, in val_dataloader
+    return valloader(
+           ^^^^^^^^^
+NameError: name 'valloader' is not defined
+[2023-07-02 06:30:12,174][mylib.utils.utils][INFO] - Output dir: /workspace/EMLO/outputs/2023-07-02/06-30-10

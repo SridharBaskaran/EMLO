@@ -1,0 +1,10 @@
+[2023-07-02 07:19:20,181][mylib.train][INFO] - Instantiating datamodule <mylib.data.cifar_datamodule.CIFARDataModule>
+[2023-07-02 07:19:20,184][mylib.train][INFO] - Instantiating model <mylib.model.timm_module.TIMMModule>
+[2023-07-02 07:19:20,502][mylib.train][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2023-07-02 07:19:20,579][mylib.train][INFO] - Starting training!
+[2023-07-02 08:05:51,266][mylib.train][INFO] - saving temperory model in outputs/temp_trained.pth for quick eval step
+[2023-07-02 08:05:51,384][mylib.train][INFO] - Starting testing!
+[2023-07-02 08:05:51,384][mylib.train][WARNING] - Best ckpt not found! Using current weights for testing...
+[2023-07-02 08:07:05,442][mylib.train][INFO] - Best ckpt path: None
+[2023-07-02 08:07:05,443][mylib.utils.utils][INFO] - Output dir: /workspace/EMLO/outputs/2023-07-02/07-19-20
+[2023-07-02 08:07:05,443][mylib.utils.utils][INFO] - Metric name is None! Skipping metric value retrieval...
